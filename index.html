@@ -66,7 +66,21 @@ td:last-child{color:#9CA3AF;line-height:1.7;font-size:13.5px}
 footer{padding:48px 0;border-top:1px solid #2E3138;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;margin-top:40px}
 .pulse{animation:pulse 2s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(227,6,19,0.4)}70%{box-shadow:0 0 0 10px rgba(227,6,19,0)}100%{box-shadow:0 0 0 0 rgba(227,6,19,0)}}
-@media(max-width:768px){.kpi-grid{grid-template-columns:1fr}.card-header{flex-direction:column;align-items:flex-start}.nav{display:none}}
+.t-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}
+@media(max-width:768px){
+  section{padding:60px 0}
+  .mx{padding:0 20px}
+  .kpi-grid{grid-template-columns:1fr;gap:16px}
+  .card-header{padding:20px;flex-direction:column;align-items:flex-start}
+  .card:hover{transform:translateY(-3px)}
+  td,th{padding:12px 16px;white-space:nowrap}
+  td:last-child{white-space:normal;min-width:200px}
+  .kpi{padding:24px}
+  .kpi-val{font-size:2.4rem}
+  .nav{display:none}
+  .hero{min-height:auto;padding:80px 0}
+  .brand{margin-bottom:40px}
+}
 </style>
 </head>
 <body>
@@ -133,6 +147,7 @@ footer{padding:48px 0;border-top:1px solid #2E3138;display:flex;justify-content:
         <div class="leg-item"><span class="tag tag-blue" style="padding:2px 8px">Доопрацювання</span> вдосконалення наявного</div>
       </div>
     </div>
+    <div class="t-wrap">
     <table>
       <thead><tr><th style="width:30%">Функціонал</th><th style="width:16%">Тип розробки</th><th>Опис та коментарі</th></tr></thead>
       <tbody>
@@ -153,6 +168,7 @@ footer{padding:48px 0;border-top:1px solid #2E3138;display:flex;justify-content:
         <tr><td>Комерційні вантажі</td><td><span class="tag tag-green">Нова</span></td><td>Заявка на прорахунок вартості, комунікація з менеджером, можливість торгуватися.</td></tr>
       </tbody>
     </table>
+    </div>
   </div>
 </div>
 </section>
@@ -171,20 +187,22 @@ footer{padding:48px 0;border-top:1px solid #2E3138;display:flex;justify-content:
     <div class="card-header">
       <div class="phase-badge pb-yellow">📈 Етап 2 — Scale &nbsp;<span class="tag tag-yellow" style="font-size:10px">9 фіч</span></div>
     </div>
+    <div class="t-wrap">
     <table>
       <thead><tr><th style="width:30%">Функціонал</th><th style="width:16%">Тип розробки</th><th>Опис та коментарі</th></tr></thead>
       <tbody>
-        <tr><td>Програма лояльності</td><td><span class="tag tag-blue">Доопрацювання</span></td><td>Рівень користувача в системі лояльності НП.</td></tr>
+        <tr><td>Програма лояльності</td><td><span class="tag tag-blue">Доопрацювання</span></td><td>Рівень користувача в системи лояльності НП.</td></tr>
         <tr><td>Калькулятор доставки</td><td><span class="tag tag-blue">Доопрацювання</span></td><td>Орієнтовна вартість та терміни безпосередньо під час формування посилки.</td></tr>
         <tr><td>Перевірка товару (фотозвіт)</td><td><span class="tag tag-green">Нова</span></td><td>Замовлення фотофіксації з детальною інструкцією для працівника складу.</td></tr>
         <tr><td>Розконсолідація</td><td><span class="tag tag-green">Нова</span></td><td>Поділ однієї великої партії на кілька посилок для різних одержувачів.</td></tr>
-        <tr><td>Масові дії</td><td><span class="tag tag-green">Нова</span></td><td>Масове створення товарів для економії часу при великих об'ємах.</td></tr>
+        <tr><td>Масове створення</td><td><span class="tag tag-green">Нова</span></td><td>Масове створення товарів для економії часу при великих об'ємах.</td></tr>
         <tr><td>Вибір служб доставки</td><td><span class="tag tag-green">Нова</span></td><td>Доставка по Україні Укрпоштою, Міст Експрес чи на точки Rozetka.</td></tr>
         <tr><td>Розумний підбір відділення</td><td><span class="tag tag-green">Нова</span></td><td>Автоматична підказка вантажного відділення, якщо коробка завелика для поштомата.</td></tr>
         <tr><td>Фінансування (кредит)</td><td><span class="tag tag-green">Нова</span></td><td>Надання кредитних коштів на закупівлю товарів у Китаї прямо через кабінет.</td></tr>
         <tr><td>B2B-сорсинг</td><td><span class="tag tag-green">Нова</span></td><td>Викуп за посиланням, пошук товару під ключ з перевіркою рейтингів постачальників.</td></tr>
       </tbody>
     </table>
+    </div>
   </div>
 </div>
 </section>
@@ -203,6 +221,7 @@ footer{padding:48px 0;border-top:1px solid #2E3138;display:flex;justify-content:
     <div class="card-header">
       <div class="phase-badge pb-blue">🏢 Етап 3 — Enterprise &nbsp;<span class="tag tag-blue" style="font-size:10px">3 фічі</span></div>
     </div>
+    <div class="t-wrap">
     <table>
       <thead><tr><th style="width:30%">Функціонал</th><th style="width:16%">Тип розробки</th><th>Опис та коментарі</th></tr></thead>
       <tbody>
@@ -211,6 +230,7 @@ footer{padding:48px 0;border-top:1px solid #2E3138;display:flex;justify-content:
         <tr><td>Розширена B2B аналітика</td><td><span class="tag tag-green">Нова</span></td><td>Дашборди з обсягами, витратами та термінами для прийняття управлінських рішень.</td></tr>
       </tbody>
     </table>
+    </div>
   </div>
 
   <footer class="anim d2">
