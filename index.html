@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B2B Форвардинг — Продуктовий Беклог | Нова Пошта</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#111214;color:#F0F2F5}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:linear-gradient(#E30613,#FF6B6B);border-radius:4px}
+.mx{max-width:1100px;margin:0 auto;padding:0 40px}
+section{padding:100px 0}
+.progress-wrap{position:fixed;top:0;left:0;width:100%;height:3px;background:rgba(255,255,255,.05);z-index:1000}
+#progress{height:100%;width:0%;background:linear-gradient(90deg,#E30613,#FF6B6B);box-shadow:0 0 15px rgba(227,6,19,.5);transition:width .1s}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#E30613,transparent);opacity:.2}
+.sl{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#E30613;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sl::before{content:"";width:20px;height:1px;background:#E30613}
+.tag{display:inline-block;border-radius:6px;padding:4px 12px;font-size:11px;font-weight:700;transition:all .3s ease;cursor:default}
+.tag:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.tag-red{background:rgba(227,6,19,.12);border:1px solid rgba(227,6,19,.3);color:#FF6B6B}
+.confidential{animation:conf-pulse 2s infinite}
+@keyframes conf-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(.98)}}
+.tag-green{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#4ADE80}
+.tag-blue{background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.3);color:#60A5FA}
+.tag-yellow{background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.3);color:#FBBF24}
+.card{background:linear-gradient(135deg,rgba(26,28,31,.9),rgba(17,18,20,.9));border:1px solid #2E3138;border-radius:16px;overflow:hidden;margin-bottom:32px;transition:all .4s cubic-bezier(.165,.84,.44,1);position:relative}
+.card:hover{border-color:rgba(227,6,19,.4);transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 20px rgba(227,6,19,.05)}
+.card-header{padding:24px 32px;border-bottom:1px solid #2E3138;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;background:rgba(255,255,255,.02)}
+.phase-badge{display:inline-flex;align-items:center;gap:10px;border-radius:10px;padding:8px 20px;font-size:14px;font-weight:800;letter-spacing:.02em}
+.pb-red{background:rgba(227,6,19,.15);border:1px solid rgba(227,6,19,.3);color:#FF3B30;box-shadow:0 0 15px rgba(227,6,19,.1)}
+.pb-yellow{background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.3);color:#FFCC00}
+.pb-blue{background:rgba(96,165,250,.15);border:1px solid rgba(96,165,250,.3);color:#5AC8FA}
+table{width:100%;border-collapse:collapse}
+th{padding:16px 24px;text-align:left;color:#6B7280;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.15em;border-bottom:1px solid #2E3138;background:rgba(0,0,0,.1)}
+td{padding:18px 24px;border-bottom:1px solid rgba(46,49,56,.4);font-size:14px;vertical-align:middle;transition:all .2s ease}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(255,255,255,.03);color:#fff}
+td:first-child{color:#fff;font-weight:600;font-size:15px}
+td:last-child{color:#9CA3AF;line-height:1.7;font-size:13.5px}
+.hero{min-height:90vh;display:flex;align-items:center;background-image:radial-gradient(circle at 2px 2px,rgba(255,255,255,.05)1px,transparent 0);background-size:40px 40px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--m-x, 50%) var(--m-y, 50%),rgba(227,6,19,.08)0%,transparent 50%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,#111214,transparent 20%,transparent 80%,#111214)}
+.hero-inner{position:relative;z-index:1}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:56px}
+.logo{width:48px;height:48px;background:#E30613;border-radius:12px;display:grid;place-items:center;font-weight:900;color:#fff;font-size:18px;box-shadow:0 8px 24px rgba(227,6,19,.4);animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px}
+.kpi{background:rgba(26,28,31,.6);backdrop-filter:blur(10px);border:1px solid #2E3138;border-radius:20px;padding:32px;position:relative;overflow:hidden;transition:all .3s ease}
+.kpi:hover{border-color:#E30613;transform:translateY(-8px);background:rgba(26,28,31,.8)}
+.kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#E30613,#FF6B6B);opacity:.7}
+.kpi-val{font-size:2.8rem;font-weight:900;color:#fff;line-height:1;margin-bottom:4px}
+.kpi-lbl{color:#6B7280;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;margin-bottom:12px}
+.kpi-sub{color:#E30613;font-size:13px;font-weight:700;margin-top:8px;display:flex;align-items:center;gap:6px}
+.kpi-sub::before{content:"→";font-size:16px}
+.legend{display:flex;gap:24px;flex-wrap:wrap;align-items:center}
+.leg-item{display:flex;align-items:center;gap:8px;font-size:12px;color:#9CA3AF;font-weight:500}
+.anim{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.215,.61,.355,1)}
+.anim.vis{opacity:1;transform:none}
+.d1{transition-delay:.15s}.d2{transition-delay:.3s}.d3{transition-delay:.45s}
+.nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:12px;background:rgba(0,0,0,.3);padding:16px 8px;border-radius:30px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05)}
+.nd{width:10px;height:10px;border-radius:50%;background:#444;border:none;cursor:pointer;transition:all .4s ease;padding:0;position:relative}
+.nd::after{content:attr(title);position:absolute;right:25px;top:50%;transform:translateY(-50%);background:#1A1C1F;color:#fff;padding:4px 12px;border-radius:6px;font-size:11px;font-weight:600;opacity:0;pointer-events:none;transition:all .3s ease;white-space:nowrap;border:1px solid #2E3138}
+.nd:hover::after{opacity:1;right:35px}
+.nd.active{background:#E30613;transform:scale(1.4);box-shadow:0 0 15px rgba(227,6,19,.6)}
+footer{padding:48px 0;border-top:1px solid #2E3138;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;margin-top:40px}
+.pulse{animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(227,6,19,0.4)}70%{box-shadow:0 0 0 10px rgba(227,6,19,0)}100%{box-shadow:0 0 0 0 rgba(227,6,19,0)}}
+@media(max-width:768px){.kpi-grid{grid-template-columns:1fr}.card-header{flex-direction:column;align-items:flex-start}.nav{display:none}}
+</style>
+</head>
+<body>
+
+<div class="progress-wrap"><div id="progress"></div></div>
+<nav class="nav" id="nav"></nav>
+
+<!-- HERO -->
+<section class="hero" id="s0">
+<div class="mx hero-inner">
+  <div class="brand anim">
+    <div class="logo">НП</div>
+    <span style="font-weight:700;color:#fff;font-size:17px;letter-spacing:.04em">НОВА ПОШТА</span>
+    <div style="width:1px;height:20px;background:#2E3138;margin:0 6px"></div>
+    <span class="tag tag-red confidential">INTERNAL — CONFIDENTIAL</span>
+  </div>
+  <div class="anim d1">
+    <p class="sl">Внутрішній продуктовий беклог</p>
+    <h1 style="font-size:clamp(2rem,5vw,3.6rem);font-weight:900;line-height:1.1;margin-bottom:16px">
+      B2B-Форвардинг з Китаю<br>
+      <span style="color:#E30613">Продуктовий беклог</span>
+    </h1>
+    <p style="color:#9CA3AF;font-size:17px;max-width:600px;line-height:1.6">
+      Нативний цифровий продукт у єдиній екосистемі Бізнес-кабінету
+      <strong style="color:#fff">my.novapost</strong>.
+      Asset-light модель — нульові капітальні інвестиції в інфраструктуру.
+    </p>
+  </div>
+  <div class="kpi-grid anim d2">
+    <div class="kpi">
+      <p class="kpi-lbl">Ресурси на старт</p>
+      <p class="kpi-val counter" data-target="9">0</p>
+      <p class="kpi-sub">IT-спеціалістів</p>
+    </div>
+    <div class="kpi">
+      <p class="kpi-lbl">Термін розробки</p>
+      <p class="kpi-val"><span class="counter" data-target="12">0</span></p>
+      <p class="kpi-sub">місяців MVP</p>
+    </div>
+    <div class="kpi">
+      <p class="kpi-lbl">Капітальні інвестиції</p>
+      <p class="kpi-val">$<span class="counter" data-target="0">0</span></p>
+      <p class="kpi-sub">Asset-light модель</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PHASE 1 -->
+<section id="s1">
+<div class="mx">
+  <div class="anim" style="margin-bottom:28px">
+    <p class="sl">01 — Перша ітерація</p>
+    <h2 style="font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;color:#fff;margin-bottom:8px">MVP та Core-функціонал</h2>
+    <p style="color:#9CA3AF;max-width:640px">Базова версія продукту для пілотного запуску та тестування на перших клієнтах.</p>
+  </div>
+  <div class="card anim d1">
+    <div class="card-header">
+      <div class="phase-badge pb-red">🚀 Етап 1 — MVP &nbsp;<span class="tag tag-red" style="font-size:10px">15 фіч</span></div>
+      <div class="legend">
+        <div class="leg-item"><span class="tag tag-green" style="padding:2px 8px">Нова</span> нова розробка</div>
+        <div class="leg-item"><span class="tag tag-blue" style="padding:2px 8px">Доопрацювання</span> вдосконалення наявного</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:30%">Функціонал</th><th style="width:16%">Тип розробки</th><th>Опис та коментарі</th></tr></thead>
+      <tbody>
+        <tr><td>Адреса персонального складу</td><td><span class="tag tag-green">Нова</span></td><td>Генерація унікальної адреси в Китаї для кожного користувача.</td></tr>
+        <tr><td>Додавання товару</td><td><span class="tag tag-green">Нова</span></td><td>Створення карток очікуваних товарів з деталями.</td></tr>
+        <tr><td>Відправити в 1 клік</td><td><span class="tag tag-green">Нова</span></td><td>Створення посилки без попереднього створення товару.</td></tr>
+        <tr><td>Консолідація (створення посилки)</td><td><span class="tag tag-green">Нова</span></td><td>Об'єднання кількох товарів зі складу в одну посилку.</td></tr>
+        <tr><td>Трекінг посилок</td><td><span class="tag tag-blue">Доопрацювання</span></td><td>Відстеження статусу міжнародного відправлення в реальному часі.</td></tr>
+        <tr><td>Мульти-адресна книга отримувачів</td><td><span class="tag tag-blue">Доопрацювання</span></td><td>Збереження кількох отримувачів для швидкого вибору під час оформлення.</td></tr>
+        <tr><td>Редагування товару</td><td><span class="tag tag-green">Нова</span></td><td>Внесення змін до вже створених товарів на складі.</td></tr>
+        <tr><td>Додаткові послуги</td><td><span class="tag tag-green">Нова</span></td><td>Заміна пакування, підсилена упаковка, збереження кур'єрської коробки тощо.</td></tr>
+        <tr><td>Табло відвантажень</td><td><span class="tag tag-green">Нова</span></td><td>Графік майбутніх відправок зі складу.</td></tr>
+        <tr><td>Пошук та фільтрація</td><td><span class="tag tag-blue">Доопрацювання</span></td><td>Фільтри за періодом, статусом та типом товару.</td></tr>
+        <tr><td>Повернення по Китаю</td><td><span class="tag tag-green">Нова</span></td><td>Ініціювання reverse-відправки назад продавцю у разі невідповідності товару.</td></tr>
+        <tr><td>Фінанси та оплата</td><td><span class="tag tag-blue">Доопрацювання</span></td><td>Взаєморозрахунки по клієнту — баланс, історія платежів, рахунки, сплата за посилку.</td></tr>
+        <tr><td>Нотифікації та Звернення</td><td><span class="tag tag-blue">Доопрацювання</span></td><td>Сповіщення про пошкоджений товар, затримки та зв'язок з підтримкою.</td></tr>
+        <tr><td>Профіль та Інструкції</td><td><span class="tag tag-blue">Доопрацювання</span></td><td>Текстові та відеоінструкції для клієнтів, налаштування профілю.</td></tr>
+        <tr><td>Комерційні вантажі</td><td><span class="tag tag-green">Нова</span></td><td>Заявка на прорахунок вартості, комунікація з менеджером, можливість торгуватися.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PHASE 2 -->
+<section id="s2">
+<div class="mx">
+  <div class="anim" style="margin-bottom:28px">
+    <p class="sl">02 — Друга ітерація</p>
+    <h2 style="font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;color:#fff;margin-bottom:8px">Масштабування та B2B-рішення</h2>
+    <p style="color:#9CA3AF;max-width:640px">Розвиток продукту після закріплення на ринку. Фокус на складніших потребах комерційних клієнтів.</p>
+  </div>
+  <div class="card anim d1">
+    <div class="card-header">
+      <div class="phase-badge pb-yellow">📈 Етап 2 — Scale &nbsp;<span class="tag tag-yellow" style="font-size:10px">9 фіч</span></div>
+    </div>
+    <table>
+      <thead><tr><th style="width:30%">Функціонал</th><th style="width:16%">Тип розробки</th><th>Опис та коментарі</th></tr></thead>
+      <tbody>
+        <tr><td>Програма лояльності</td><td><span class="tag tag-blue">Доопрацювання</span></td><td>Рівень користувача в системі лояльності НП.</td></tr>
+        <tr><td>Калькулятор доставки</td><td><span class="tag tag-blue">Доопрацювання</span></td><td>Орієнтовна вартість та терміни безпосередньо під час формування посилки.</td></tr>
+        <tr><td>Перевірка товару (фотозвіт)</td><td><span class="tag tag-green">Нова</span></td><td>Замовлення фотофіксації з детальною інструкцією для працівника складу.</td></tr>
+        <tr><td>Розконсолідація</td><td><span class="tag tag-green">Нова</span></td><td>Поділ однієї великої партії на кілька посилок для різних одержувачів.</td></tr>
+        <tr><td>Масові дії</td><td><span class="tag tag-green">Нова</span></td><td>Масове створення товарів для економії часу при великих об'ємах.</td></tr>
+        <tr><td>Вибір служб доставки</td><td><span class="tag tag-green">Нова</span></td><td>Доставка по Україні Укрпоштою, Міст Експрес чи на точки Rozetka.</td></tr>
+        <tr><td>Розумний підбір відділення</td><td><span class="tag tag-green">Нова</span></td><td>Автоматична підказка вантажного відділення, якщо коробка завелика для поштомата.</td></tr>
+        <tr><td>Фінансування (кредит)</td><td><span class="tag tag-green">Нова</span></td><td>Надання кредитних коштів на закупівлю товарів у Китаї прямо через кабінет.</td></tr>
+        <tr><td>B2B-сорсинг</td><td><span class="tag tag-green">Нова</span></td><td>Викуп за посиланням, пошук товару під ключ з перевіркою рейтингів постачальників.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PHASE 3 -->
+<section id="s3">
+<div class="mx">
+  <div class="anim" style="margin-bottom:28px">
+    <p class="sl">03 — Третя ітерація</p>
+    <h2 style="font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;color:#fff;margin-bottom:8px">Екосистема та Ентерпрайз</h2>
+    <p style="color:#9CA3AF;max-width:640px">Глибинна інтеграція та утримання великих корпоративних клієнтів. Продукт стає повноцінним стратегічним активом НП.</p>
+  </div>
+  <div class="card anim d1">
+    <div class="card-header">
+      <div class="phase-badge pb-blue">🏢 Етап 3 — Enterprise &nbsp;<span class="tag tag-blue" style="font-size:10px">3 фічі</span></div>
+    </div>
+    <table>
+      <thead><tr><th style="width:30%">Функціонал</th><th style="width:16%">Тип розробки</th><th>Опис та коментарі</th></tr></thead>
+      <tbody>
+        <tr><td>Мобільний додаток</td><td><span class="tag tag-green">Нова</span></td><td>Повна інтеграція розділу форвардингу в основний додаток НП.</td></tr>
+        <tr><td>Зовнішнє API</td><td><span class="tag tag-green">Нова</span></td><td>Розробка методів для інтеграції сервісу в ERP/WMS системи великих клієнтів.</td></tr>
+        <tr><td>Розширена B2B аналітика</td><td><span class="tag tag-green">Нова</span></td><td>Дашборди з обсягами, витратами та термінами для прийняття управлінських рішень.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="anim d2">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:32px;height:32px;background:#E30613;border-radius:8px;display:grid;place-items:center;font-weight:900;color:#fff;font-size:13px">НП</div>
+      <span style="color:#6B7280;font-size:13px">© 2026 Нова Пошта — Внутрішній документ. Конфіденційно.</span>
+    </div>
+    <span class="tag tag-red">Версія 1.0 — Квітень 2026</span>
+  </footer>
+</div>
+</section>
+
+<script>
+(function(){
+  // Mouse follow effect for Hero
+  var h=document.getElementById('s0');
+  h.addEventListener('mousemove',function(e){
+    var r=h.getBoundingClientRect();
+    h.style.setProperty('--m-x',(e.clientX-r.left)+'px');
+    h.style.setProperty('--m-y',(e.clientY-r.top)+'px');
+  });
+
+  // Scroll Progress
+  var prg=document.getElementById('progress');
+  window.addEventListener('scroll',function(){
+    var s=window.scrollY, d=document.documentElement.scrollHeight-window.innerHeight;
+    prg.style.width=(s/d*100)+'%';
+  });
+
+  var ids=['s0','s1','s2','s3'],labels=['Титул','MVP','Scale','Enterprise'];
+  var nav=document.getElementById('nav');
+  ids.forEach(function(id,i){
+    var b=document.createElement('button');
+    b.className='nd';b.title=labels[i];
+    b.onclick=function(){document.getElementById(id).scrollIntoView({behavior:'smooth'})};
+    nav.appendChild(b);
+  });
+  var dots=nav.querySelectorAll('.nd');
+  var nObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var i=ids.indexOf(e.target.id);
+        dots.forEach(function(d,j){d.classList.toggle('active',j===i)});
+      }
+    });
+  },{threshold:0.4});
+  ids.forEach(function(id){var el=document.getElementById(id);if(el)nObs.observe(el)});
+
+  var anims=document.querySelectorAll('.anim');
+  var aObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('vis');
+        // If it's a KPI container, start counters
+        if(e.target.classList.contains('kpi-grid')){
+          e.target.querySelectorAll('.counter').forEach(animateCounter);
+        }
+        // Stagger rows if table
+        var rows=e.target.querySelectorAll('tbody tr');
+        rows.forEach(function(row,idx){
+          row.style.opacity='0';
+          row.style.transform='translateX(-20px)';
+          setTimeout(function(){
+            row.style.transition='all .5s ease';
+            row.style.opacity='1';
+            row.style.transform='none';
+          },idx*50);
+        });
+      }
+    });
+  },{threshold:0.15});
+
+  function animateCounter(el){
+    if(el.dataset.done)return;
+    el.dataset.done='true';
+    var target=parseInt(el.dataset.target);
+    var curr=0, dur=1500, start=null;
+    function step(ts){
+      if(!start)start=ts;
+      var prog=Math.min((ts-start)/dur,1);
+      el.textContent=Math.floor(prog*target);
+      if(prog<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  anims.forEach(function(el){aObs.observe(el)});
+})();
+</script>
+</body>
+</html>
